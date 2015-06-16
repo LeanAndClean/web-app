@@ -1,9 +1,0 @@
-<hr />
-Card<br />
-<hr />
-Price Total: {{card().card.total || '...'}}
-<ul>
-  <li ng-repeat="item in card().card.orders">
-    {{item.name}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCard(item)">Remove</a>
-  </li>
-</ul>

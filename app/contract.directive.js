@@ -1,6 +1,6 @@
 angular
   .module('contract', ['ngSDK'])
-  .service('contractService', function($window, http, cardService){
+  .service('contractService', function($window, http, cartService){
     var contract = undefined;
 
     http = http({
@@ -16,12 +16,12 @@ angular
     function add(customer){
       var contract = {
         customer: customer,
-        card: cardService.card().card
+        cart: cartService.cart().cart
       };
-      var cardId = cardService.cardId();
+      var cartId = cartService.cartId();
 
       return http
-        .post('contract-service', '/contracts/' + cardId, contract)
+        .post('contract-service', '/contracts/' + cartId, contract)
         .then(function(result){
           
           if(!result.data.contract) throw new Error(result.data.message);
@@ -35,8 +35,8 @@ angular
         });
     }
 
-    function find(cardId){
-      var url = '/contracts/' + cardId;
+    function find(cartId){
+      var url = '/contracts/' + cartId;
       return http
         .get('contract-service', url)
         .then(function(result){

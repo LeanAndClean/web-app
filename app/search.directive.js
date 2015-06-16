@@ -26,9 +26,9 @@ angular
     return {
       restrict: 'E',
       templateUrl: 'search.tpl.html',
-      controller: function ($scope, searchService, cardService) {
+      controller: function ($scope, searchService, cartService) {
         $scope.items = searchService.items;
-        $scope.addToCard = cardService.add;
+        $scope.addToCart = cartService.add;
         searchService.find();
       }
     };

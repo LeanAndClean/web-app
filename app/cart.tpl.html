@@ -1,0 +1,9 @@
+<hr />
+Cart<br />
+<hr />
+Price Total: {{cart().cart.total || '...'}}
+<ul>
+  <li ng-repeat="item in cart().cart.orders">
+    {{item.name}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCart(item)">Remove</a>
+  </li>
+</ul>

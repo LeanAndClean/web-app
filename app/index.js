@@ -2,7 +2,7 @@
 
   'use strict';
   angular
-    .module('app',['ngRoute','card','search','contract'])
+    .module('app',['ngRoute','cart','search','contract'])
     .config(function ($routeProvider, $locationProvider) {
       $routeProvider
         .when('/', {
