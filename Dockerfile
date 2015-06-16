@@ -1,0 +1,11 @@
+FROM node:0.10-onbuild
+
+ADD . /
+WORKDIR /
+
+RUN npm install
+
+ENV SERVICE_PORT=8080
+EXPOSE 8080
+
+ENTRYPOINT npm start

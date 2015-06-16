@@ -1,0 +1,8 @@
+<hr />
+Products<br />
+<hr />
+<ul>
+  <li ng-repeat="item in items()">
+    {{item.name}} :: {{ item.price}} <a href="#" ng-click="addToCard(item)">Buy</a>
+  </li>
+</ul>

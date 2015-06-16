@@ -1,0 +1,14 @@
+{
+  "name": "webapp",
+  "version": "0.0.10",
+  "description": "",
+  "dependencies": {
+    "node-static": "^0.7.6"
+  },
+  "scripts":{
+    "start": "node serve.js"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
