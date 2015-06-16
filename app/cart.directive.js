@@ -20,7 +20,7 @@ angular
       cart.orders.push(item);
 
       return http
-        .post('order-service', '/cart/' + cartId, cart.orders)
+        .post('cart-service', '/cart/' + cartId, cart.orders)
         .then(function(result){
           cartId = result.data.id;
           $window.localStorage['web-app-cart-id'] = cartId;
@@ -34,7 +34,7 @@ angular
       cart.orders.push(item);
 
       return http
-        .post('order-service', '/cart/' + cartId, cart.orders)
+        .post('cart-service', '/cart/' + cartId, cart.orders)
         .then(function(result){
           cartId = result.data.id;
           $window.localStorage['web-app-cart-id'] = cartId;          
@@ -46,7 +46,7 @@ angular
     function find(){
       var url = '/cart/' + cartId;
       return http
-        .get('order-service', url)
+        .get('cart-service', url)
         .then(function(result){
           cart = result.data;
           return cart;
