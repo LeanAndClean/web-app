@@ -11,24 +11,20 @@ export DISCOVERY_SERVICE_URL=http://46.101.191.124:8500
 
 `docker build -t web-app-service .`
 
-##Run
+##Run locally
 
-`docker run -t web-app-service`
+`docker run -t -i -p 5050:5050 web-app-service`
 
-##Release
+##Release into private repository
 
 ```
 docker tag web-app-service 46.101.191.124:5000/web-app-service:0.0.10
 docker push 46.101.191.124:5000/web-app-service:0.0.10
 ```
 
-##Deploy
+##Deploy via Shipyard
 
-* Example: [Search - Health Check](http://46.101.191.124:80/healthcheck)
-
-###web-app-service
-
-####OSX/Linux
+###OSX/Linux
 
 ```
 curl -X POST \
@@ -67,7 +63,7 @@ http://46.101.191.124:8080/api/containers?pull=true \
 }'
 ```
 
-####Windows
+###Windows
 
 ```
 $Uri = "http://46.101.191.124:8080/api/containers?pull=true"
@@ -114,6 +110,8 @@ Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
 ```
 
 ##API
+
+[WebApp - Health Check](http://46.101.191.124:80/healthcheck)
 
 ###Health check
 
