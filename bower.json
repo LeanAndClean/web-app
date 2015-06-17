@@ -7,6 +7,8 @@
     "Andreas Helmberger <public@ahelmberger.de>"
   ],
   "dependencies": {
-    "lc-sdk-angular.js": "~0.0.1"
+    "lc-sdk-angular.js": "~0.0.1",
+    "angular": "~1.4.1",
+    "angular-route": "~1.4.1"
   }
 }
