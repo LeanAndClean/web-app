@@ -4,6 +4,6 @@ Cart<br />
 Price Total: {{cart().cart.total || '...'}}
 <ul>
   <li ng-repeat="item in cart().cart.orders">
-    {{item.name}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCart(item)">Remove</a>
+    {{item.artist}} :: {{item.title}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCart(item)">Remove</a>
   </li>
 </ul>
