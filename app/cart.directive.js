@@ -1,12 +1,10 @@
 angular
-  .module('cart', ['ngSDK'])
-  .service('cartService', function($window, http){
+  .module('cart', ['lcSDK'])
+  .service('cartService', function($window, lcServiceClient){
     var cartId = $window.localStorage['web-app-cart-id'] || '';
     var cart = {};
     
-    http = http({
-      discovery: { servers: ['http://46.101.191.124:8500']}
-    });
+    var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
 
     return {
       find: find,

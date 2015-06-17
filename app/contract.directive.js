@@ -1,11 +1,9 @@
 angular
-  .module('contract', ['ngSDK'])
-  .service('contractService', function($window, http, cartService){
+  .module('contract', ['lcSDK'])
+  .service('contractService', function($window, lcServiceClient, cartService){
     var contract = undefined;
 
-    http = http({
-      discovery: { servers: ['http://46.101.191.124:8500'] }
-    });
+    var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
 
     return {
       find: find,

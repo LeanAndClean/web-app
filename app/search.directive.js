@@ -1,10 +1,8 @@
 angular
-  .module('search', ['ngSDK'])
-  .service('searchService', function(http){
+  .module('search', ['lcSDK'])
+  .service('searchService', function(lcServiceClient){
     var items = [];
-    http = http({
-      discovery: { servers: ['http://46.101.191.124:8500'] }
-    });
+    var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
 
     return {
       find: find,
