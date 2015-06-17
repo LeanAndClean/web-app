@@ -18,8 +18,8 @@ export DISCOVERY_SERVICE_URL=http://46.101.191.124:8500
 ##Release into private repository
 
 ```
-docker tag web-app-service 46.101.191.124:5000/web-app-service:0.0.13
-docker push 46.101.191.124:5000/web-app-service:0.0.13
+docker tag web-app-service 46.101.191.124:5000/web-app-service:0.0.14
+docker push 46.101.191.124:5000/web-app-service:0.0.14
 ```
 
 ##Deploy via Shipyard
@@ -30,7 +30,7 @@ curl -X POST \
 -H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
 http://46.101.191.124:8080/api/containers?pull=true \
 -d '{  
-  "name":"46.101.191.124:5000/web-app-service:0.0.13",
+  "name":"46.101.191.124:5000/web-app-service:0.0.14",
   "cpus":0.1,
   "memory":64,
   "environment":{

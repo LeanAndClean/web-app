@@ -13,9 +13,10 @@ angular
       }
     };
 
-    function find(){
+    function find(number){
+      number = number || 10;
       return http
-        .get('search-service', '/')
+        .get('search-service', '/?number=' + number)
         .then(function(result){
           items = result.data;
           return items;
@@ -29,6 +30,8 @@ angular
       controller: function ($scope, searchService, cartService) {
         $scope.items = searchService.items;
         $scope.addToCart = cartService.add;
+        $scope.find = searchService.find;
+        
         searchService.find();
       }
     };
