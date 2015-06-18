@@ -24,6 +24,7 @@ docker push 46.101.191.124:5000/web-app-service:0.0.15
 
 ##Deploy via Shipyard
 
+###OSX/Linux
 ```
 curl -X POST \
 -H 'Content-Type: application/json' \
@@ -59,6 +60,51 @@ http://46.101.191.124:8080/api/containers?pull=true \
     "name":"no"
   }
 }'
+```
+
+###Windows
+```
+$Uri = "http://46.101.191.124:8080/api/containers?pull=true"
+
+$Headers = @{
+  "X-Service-Key" = "pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii"
+  "Content-Type" = "application/json"
+}
+
+$Body = @"
+{  
+  "name":"46.101.191.124:5000/web-app-service:0.0.15",
+  "cpus":0.1,
+  "memory":64,
+  "environment":{
+    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:80/healthcheck",
+    "SERVICE_PORT":"80",
+    "DISCOVERY_SERVICE_URL":"http://46.101.191.124:8500"
+  },
+  "hostname":"",
+  "domain":"",
+  "type":"service",
+  "network_mode":"bridge",
+  "links":{},
+  "volumes":[],
+  "bind_ports":[  
+    {  
+       "proto":"tcp",
+       "host_ip":null,
+       "port":80,
+       "container_port":80
+    }
+  ],
+  "labels":[],
+  "publish":false,
+  "privileged":false,
+  "restart_policy":{  
+    "name":"no"
+  }
+}
+"@
+
+Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
 ```
 
 ##API
