@@ -2,8 +2,12 @@
 Products<br />
 Anzahl: <a href="#" ng-click="find(10)">10</a> &nbsp; <a href="#" ng-click="find(20)">20</a> &nbsp; <a href="#" ng-click="find(50)">50</a><br/>
 <hr />
-<ul>
-  <li ng-repeat="item in items()">
-    {{item.artist}} :: {{item.title}} :: {{ item.price}} <a href="#" ng-click="addToCart(item)">Buy</a>
+<ul style="display: block; padding: 0;">
+  <li ng-repeat="item in items()" style="list-style-type: none; float: left; width: 200px; padding: 0 10px; height: 250px; text-align: center;">
+    <div style="display: block; margin: 0 auto;"><img ng-src="{{item.covers[0]}}" style="width: 120px; border: 1px solid silver;"></div>
+    <div style="margin-bottom: 2px;">{{item.artist}}</div>
+    <div style="margin-bottom: 10px; font-weight: bold;">{{item.title}}</div>
+    <div style="margin-bottom: 5px;">{{item.price.toFixed(2)}}&nbsp;€</div>
+    <div style="font-weight: bold; font-size: 120%;"><a href="#" ng-click="addToCart(item)">Kaufen</a></div>
   </li>
 </ul>
