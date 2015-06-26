@@ -3,8 +3,7 @@
 ##Configuration parameters
 
 ```
-export SERVICE_PORT=5050
-export DISCOVERY_SERVICE_URL=http://46.101.191.124:8500
+export SERVICE_PORT=5555
 ```
 
 ##Build
@@ -13,7 +12,7 @@ export DISCOVERY_SERVICE_URL=http://46.101.191.124:8500
 
 ##Run locally
 
-`docker run -t -i -p 5050:5050 web-app-service`
+`docker run -t -i -p 5555:5555 web-app-service`
 
 ##Release into private repository
 
@@ -35,9 +34,9 @@ http://46.101.191.124:8080/api/containers?pull=true \
   "cpus":0.1,
   "memory":64,
   "environment":{
-    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:80/healthcheck",
-    "SERVICE_PORT":"80",
-    "DISCOVERY_SERVICE_URL":"http://46.101.191.124:8500"
+    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:5555/healthcheck",
+    "SERVICE_PORT":"5555",
+    "LOGS":"true"
   },
   "hostname":"",
   "domain":"",
@@ -49,8 +48,8 @@ http://46.101.191.124:8080/api/containers?pull=true \
     {  
        "proto":"tcp",
        "host_ip":null,
-       "port":80,
-       "container_port":80
+       "port":5555,
+       "container_port":5555
     }
   ],
   "labels":[],
