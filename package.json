@@ -1,7 +1,7 @@
 {
-  "name": "webapp",
+  "name": "ecommerce-web-app",
   "private": true,
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "",
   "dependencies": {
     "node-static": "^0.7.6"

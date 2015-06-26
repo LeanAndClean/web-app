@@ -10,6 +10,7 @@ angular
       find: find,
       add: add,
       remove: remove,
+      close: close,
       cartId: function(){ return cartId; },
       cart: function(){ return cart; }
     };
@@ -50,6 +51,13 @@ angular
           return cart;
         });
     }
+
+    function close(){
+      return http
+        .post('cart-service', '/cart/' + cartId + '/close', {})
+        .then(find);      
+    }
+
   })  
   .directive('cart', function () {
     return {

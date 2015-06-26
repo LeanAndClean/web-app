@@ -2,4 +2,4 @@
 <div>Address: <input type="text" ng-model="customer.address" /></div>
 <div>zip: <input type="text" ng-model="customer.zip" /></div>
 <div><button ng-click="pay(customer)" ng-hide="contract()">Pay</button></div>
-<div><a href="/" ng-show="contract()">Thank you</a></div>
+<div><a href="/" ng-show="contract()" ng-click="close()">Thank you</a></div>
