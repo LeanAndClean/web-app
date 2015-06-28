@@ -1,7 +1,10 @@
 angular
   .module('cart', ['lcSDK'])
   .service('cartService', function($window, lcServiceClient){
-    var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
+    var http = lcServiceClient({ 
+      discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+      servicesRefreshInterval: 30000
+    });
     var cartId = $window.localStorage['web-app-cart-id'] || '';
     var cart = undefined;    
     

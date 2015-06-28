@@ -1,13 +1,13 @@
 {
   "name": "web-app",
-  "version": "0.0.15",
+  "version": "0.0.20",
   "homepage": "https://github.com/LeanAndClean/web-app",
   "authors": [
     "Mike Bild <mike@subkit.io>",
     "Andreas Helmberger <public@ahelmberger.de>"
   ],
   "dependencies": {
-    "lc-sdk-angular.js": "~0.0.1",
+    "lc-sdk-angular.js": "~0.0.2",
     "angular": "~1.4.1",
     "angular-route": "~1.4.1"
   }

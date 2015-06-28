@@ -3,7 +3,10 @@ angular
   .service('contractService', function($window, $q, lcServiceClient, cartService){
     var contract = undefined;
 
-    var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'] });
+    var http = lcServiceClient({ 
+      discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+      servicesRefreshInterval: 30000
+    });
 
     return {
       find: find,
