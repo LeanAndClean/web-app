@@ -1,7 +1,7 @@
 {
   "name": "ecommerce-web-app",
   "private": true,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
   "dependencies": {
     "express": "^4.13.0",

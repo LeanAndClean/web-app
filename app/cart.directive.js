@@ -1,13 +1,10 @@
 angular
   .module('cart', ['lcSDK'])
   .service('cartService', function($window, lcServiceClient){
-    var cartId = $window.localStorage['web-app-cart-id'] || '';
-    var cart = {
-      cartId: undefined,
-      orders: []
-    };    
     var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
-
+    var cartId = $window.localStorage['web-app-cart-id'] || '';
+    var cart = undefined;    
+    
     return {
       find: find,
       add: add,
@@ -44,10 +41,12 @@ angular
           return cart;
         })
         .catch(function(){
-          cart = {
-            cartId: undefined,
-            orders: []
-          };
+          if(!cart) {
+            cart = {
+              cartId: undefined,
+              orders: []
+            };
+          }
           return cart;
         });
     }
@@ -55,6 +54,9 @@ angular
     function close(){
       return http
         .post('cart-service', '/cart/' + cartId + '/close', {})
+        .then(function(){
+          cart = undefined;
+        })
         .then(find);
     }
   })  
