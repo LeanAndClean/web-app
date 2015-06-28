@@ -4,6 +4,7 @@
 
 ```
 export SERVICE_PORT=5555
+export SHUTDOWN_TIMEOUT_MS=10000
 ```
 
 ##Build
@@ -17,8 +18,8 @@ export SERVICE_PORT=5555
 ##Release into private repository
 
 ```
-docker tag ecommerce-web-app 46.101.191.124:5000/ecommerce-web-app:0.0.17
-docker push 46.101.191.124:5000/ecommerce-web-app:0.0.17
+docker tag ecommerce-web-app 46.101.191.124:5000/ecommerce-web-app:0.0.18
+docker push 46.101.191.124:5000/ecommerce-web-app:0.0.18
 ```
 
 ##Deploy via Shipyard
@@ -29,12 +30,13 @@ curl -X POST \
 -H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
 http://46.101.191.124:8080/api/containers?pull=true \
 -d '{  
-  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.17",
+  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.18",
   "cpus":0.1,
   "memory":32,
   "environment":{
     "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:5555/healthcheck",
     "SERVICE_PORT":"5555",
+    "SHUTDOWN_TIMEOUT_MS":"10000",
     "LOG":"true"
   },
   "hostname":"",

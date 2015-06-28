@@ -9,5 +9,6 @@ RUN npm install
 RUN bower install --allow-root
 
 ENV SERVICE_PORT=5555
+ENV SHUTDOWN_TIMEOUT_MS=10000
 
-ENTRYPOINT npm start
+ENTRYPOINT ["node","serve.js"]

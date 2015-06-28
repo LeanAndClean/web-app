@@ -2,8 +2,10 @@ angular
   .module('cart', ['lcSDK'])
   .service('cartService', function($window, lcServiceClient){
     var cartId = $window.localStorage['web-app-cart-id'] || '';
-    var cart = {};
-    
+    var cart = {
+      cartId: undefined,
+      orders: []
+    };    
     var http = lcServiceClient({ discoveryServers: ['http://46.101.191.124:8500'] });
 
     return {
@@ -21,25 +23,16 @@ angular
       return http
         .post('cart-service', '/cart/' + cartId, cart.orders)
         .then(function(result){
-          cartId = result.data.id;
+          cart = result.data.cart;
+          cartId = result.data.cart.cartId;
           $window.localStorage['web-app-cart-id'] = cartId;
-          return cartId;
-        })
-        .then(find);
+          return cart;
+        });
     }
 
     function remove(item){
       item.removed = true;
-      cart.orders.push(item);
-
-      return http
-        .post('cart-service', '/cart/' + cartId, cart.orders)
-        .then(function(result){
-          cartId = result.data.id;
-          $window.localStorage['web-app-cart-id'] = cartId;          
-          return cartId;
-        })
-        .then(find);
+      return add(item);
     }
 
     function find(){
@@ -49,15 +42,21 @@ angular
         .then(function(result){
           cart = result.data;
           return cart;
+        })
+        .catch(function(){
+          cart = {
+            cartId: undefined,
+            orders: []
+          };
+          return cart;
         });
     }
 
     function close(){
       return http
         .post('cart-service', '/cart/' + cartId + '/close', {})
-        .then(find);      
+        .then(find);
     }
-
   })  
   .directive('cart', function () {
     return {
