@@ -62,6 +62,51 @@ http://46.101.191.124:8080/api/containers?pull=true \
 }'
 ```
 
+```
+$Uri = "http://46.101.191.124:8080/api/containers?pull=true"
+
+$Headers = @{
+  "X-Service-Key" = "pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii"
+  "Content-Type" = "application/json"
+}
+
+$Body = @"
+{  
+  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.20",
+  "cpus":0.1,
+  "memory":32,
+  "environment":{
+    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:5555/healthcheck",
+    "SERVICE_PORT":"5555",
+    "SHUTDOWN_TIMEOUT_MS":"10000",
+    "LOG":"true"
+  },
+  "hostname":"",
+  "domain":"",
+  "type":"service",
+  "network_mode":"bridge",
+  "links":{},
+  "volumes":[],
+  "bind_ports":[  
+    {  
+      "proto":"tcp",
+      "host_ip":null,
+      "port":5555,
+      "container_port":5555
+    }
+  ],
+  "labels":[],
+  "publish":false,
+  "privileged":false,
+  "restart_policy":{  
+    "name":"no"
+  }
+}
+"@
+
+Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
+```
+
 ##API
 
 ###Health check
