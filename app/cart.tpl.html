@@ -1,9 +1,9 @@
-<hr />
-Cart<br />
-<hr />
-Price Total: {{cart().cart.total || '...'}}
-<ul>
+<h2>Warenkorb</h2>
+<hr>
+<ul style="padding-left: 1.2em;">
   <li ng-repeat="item in cart().cart.orders">
-    {{item.artist}} :: {{item.title}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCart(item)">Remove</a>
+    {{item.artist}} :: {{item.title}} :: {{item.amount}}x{{item.price}} :: {{item.total}} <a href="#" ng-click="removeFromCart(item)">Entfernen</a>
   </li>
 </ul>
+<br>
+<p style="font-weight: bold;">Gesamtpreis: {{cart().cart.total || '...'}}</p>

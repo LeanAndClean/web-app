@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
+    <link href="//cdn.muicss.com/mui-0.1.18/css/mui.min.css" rel="stylesheet">
+    <script defer src="//cdn.muicss.com/mui-0.1.18/js/mui.min.js"></script>
     <script defer src="/lib/angular/angular.min.js"></script>
     <script defer src="/lib/angular-route/angular-route.min.js"></script>
     <script defer src="/lib/lc-sdk-angular.js/lc-sdk-angular.js"></script>
@@ -9,7 +11,16 @@
     <script defer src="/contract.directive.js"></script>
     <script defer src="/index.js"></script>
   </head>
-  <body>
-    <ng-view></ng-view>
+  <body style="background-color: #C3D3E0; margin: 0; padding: 0;">
+    <header style="display: flex; align-items: center; background-color: #0F5C99; color: #fff; margin: 0; padding: 20px 40px;">
+      <h1 style="margin: 0; padding: 0; flex: 1 1 0%; font-size: 2em; color: white;">Music Shop</h1>
+      <p style="margin: 0; padding: 0; flex: none; font-size: 1.2em;">Login</p>
+    </header>
+    <main style="display: block; background-color: #eee; padding: 20px; margin: 0;">
+      <ng-view></ng-view>
+    </main>
+    <footer style="display: flex; align-items: center; background-color: #C3D3E0; color: #346081; margin: 0; padding: 20px 40px;">
+      <p style="margin: 0; padding: 0;">&copy; 2015 by Music Shop Company (completely fictional)</p>
+    </footer>
   </body>
 </html>
