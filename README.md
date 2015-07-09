@@ -18,8 +18,8 @@ export SHUTDOWN_TIMEOUT_MS=10000
 ##Release into private repository
 
 ```
-docker tag ecommerce-web-app 46.101.191.124:5000/ecommerce-web-app:0.0.20
-docker push 46.101.191.124:5000/ecommerce-web-app:0.0.20
+docker tag ecommerce-web-app 46.101.191.124:5000/ecommerce-web-app:0.0.21
+docker push 46.101.191.124:5000/ecommerce-web-app:0.0.21
 ```
 
 ##Deploy via Shipyard
@@ -30,7 +30,7 @@ curl -X POST \
 -H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
 http://46.101.191.124:8080/api/containers?pull=true \
 -d '{  
-  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.20",
+  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.21",
   "cpus":0.1,
   "memory":32,
   "environment":{
@@ -72,7 +72,7 @@ $Headers = @{
 
 $Body = @"
 {  
-  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.20",
+  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.21",
   "cpus":0.1,
   "memory":32,
   "environment":{
