@@ -20,7 +20,7 @@ export SERVICE_VERSION=0.0.21
 ##Publish into private repository
 
 ```
-docker tag ecommerce-web-app $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
+docker tag ecommerce-web-app:latest $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
 docker push $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
 ```
 
