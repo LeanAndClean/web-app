@@ -1,6 +1,6 @@
 #ECommerce Web App
 
-##Configuration parameters
+##Configuration
 
 ```
 export SERVICE_PORT=5555
@@ -17,7 +17,7 @@ export SERVICE_VERSION=0.0.21
 
 `docker run -it -p $SERVICE_PORT:$SERVICE_PORT ecommerce-web-app`
 
-##Release into private repository
+##Publish into private repository
 
 ```
 docker tag ecommerce-web-app $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
