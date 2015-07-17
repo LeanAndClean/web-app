@@ -5,6 +5,8 @@
 ```
 export SERVICE_PORT=5555
 export SHUTDOWN_TIMEOUT_MS=10000
+export PUBLISH_SERVICE=<ip>:<port>
+export SERVICE_VERSION=0.0.21
 ```
 
 ##Build
@@ -13,98 +15,13 @@ export SHUTDOWN_TIMEOUT_MS=10000
 
 ##Run locally
 
-`docker run -t -i -p 5555:5555 ecommerce-web-app`
+`docker run -it -p $SERVICE_PORT:$SERVICE_PORT ecommerce-web-app`
 
 ##Release into private repository
 
 ```
-docker tag ecommerce-web-app 46.101.191.124:5000/ecommerce-web-app:0.0.21
-docker push 46.101.191.124:5000/ecommerce-web-app:0.0.21
-```
-
-##Deploy via Shipyard
-
-```
-curl -X POST \
--H 'Content-Type: application/json' \
--H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
-http://46.101.191.124:8080/api/containers?pull=true \
--d '{  
-  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.21",
-  "cpus":0.1,
-  "memory":32,
-  "environment":{
-    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:5555/healthcheck",
-    "SERVICE_PORT":"5555",
-    "SHUTDOWN_TIMEOUT_MS":"10000",
-    "LOG":"true"
-  },
-  "hostname":"",
-  "domain":"",
-  "type":"service",
-  "network_mode":"bridge",
-  "links":{},
-  "volumes":[],
-  "bind_ports":[  
-    {  
-      "proto":"tcp",
-      "host_ip":null,
-      "port":5555,
-      "container_port":5555
-    }
-  ],
-  "labels":[],
-  "publish":false,
-  "privileged":false,
-  "restart_policy":{  
-    "name":"no"
-  }
-}'
-```
-
-```
-$Uri = "http://46.101.191.124:8080/api/containers?pull=true"
-
-$Headers = @{
-  "X-Service-Key" = "pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii"
-  "Content-Type" = "application/json"
-}
-
-$Body = @"
-{  
-  "name":"46.101.191.124:5000/ecommerce-web-app:0.0.21",
-  "cpus":0.1,
-  "memory":32,
-  "environment":{
-    "SERVICE_CHECK_SCRIPT":"curl -s http://46.101.191.124:5555/healthcheck",
-    "SERVICE_PORT":"5555",
-    "SHUTDOWN_TIMEOUT_MS":"10000",
-    "LOG":"true"
-  },
-  "hostname":"",
-  "domain":"",
-  "type":"service",
-  "network_mode":"bridge",
-  "links":{},
-  "volumes":[],
-  "bind_ports":[  
-    {  
-      "proto":"tcp",
-      "host_ip":null,
-      "port":5555,
-      "container_port":5555
-    }
-  ],
-  "labels":[],
-  "publish":false,
-  "privileged":false,
-  "restart_policy":{  
-    "name":"no"
-  }
-}
-"@
-
-Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
+docker tag ecommerce-web-app $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
+docker push $PUBLISH_SERVICE/ecommerce-web-app:$SERVICE_VERSION
 ```
 
 ##API
@@ -114,5 +31,5 @@ Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
 ```
 curl -X GET \
 -H 'Content-Type: application/json' \
-http://46.101.191.124:5555/healthcheck
+http://localhost:$SERVICE_PORT/healthcheck
 ```
